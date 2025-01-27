@@ -9,48 +9,50 @@ This React application offers a hassle-free way for users to explore GitHub prof
 ### File Tree
 
 ```
-.
-└── github-api/
-├── public/
-│ ├── favicon.ico
-│ ├── index.html
-│ ├── manifest.json
-│ └── robots.txt
-└── src/
-│   ├── assets/
-│   ├── avatar.jpg
-│   ├── pull-shark.png
-│   └── quickdraw.png
-├── components/
-│ ├── BreadCrumb.jsx
-│ ├── Button.jsx
-│ ├── Card.jsx
-│ ├── Card2.jsx
-│ ├── Footer.jsx
-│ ├── Grid.jsx
-│ ├── Header.jsx
-│ ├── index.js
-│ ├── Loader.jsx
-│ ├── Meta.jsx
-│ ├── Paginate.jsx
-│ └── SearchBar.jsx
-├── hooks/
-│ ├── useApiFetch.js
-│ ├── useProfileFetch.js
-│ └── useRepoFetch.js
-├── pages/
-│ ├── Error.jsx
-│ ├── Home.jsx
-│ ├── NotFound.jsx
-│ ├── Repos.jsx
-│ ├── SearchResults.jsx
-│ └── SingleRepo.jsx
-├── App.css
-├── App.js
-├── index.css
-├── index.js
-└── logo.svg
+github-profile-react
+  public
+  src
+    assets
+      avatar.jpg
+      pull-shark.png
+      quickdraw.png
+    components
+      BreadCrumb.jsx
+      Button.jsx
+      Card.jsx
+      Card2.jsx
+      Footer.jsx
+      Grid.jsx
+      Header.jsx
+      index.js
+      Loader.jsx
+      Meta.jsx
+      Paginate.jsx
+      SearchBar.jsx
+    hooks
+      useApiFetch.js
+      useProfileFetch.js
+      useRepoFetch.js
+    pages
+      Error.jsx
+      Home.jsx
+      NotFound.jsx
+      Repos.jsx
+      SearchResults.jsx
+      SingleRepo.jsx
+    App.css
+    App.jsx
+    index.css
+    index.jsx
+    logo.svg
+index.html
+.gitignore
+package.json
+README.md
+vite.config.js
 ```
+
+[![CodeFactor](https://www.codefactor.io/repository/github/codelikeagirl29/github-profile-search/badge)](https://www.codefactor.io/repository/github/codelikeagirl29/github-profile-search)
 
 ## Tech:
 

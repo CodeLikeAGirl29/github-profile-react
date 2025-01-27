@@ -6,7 +6,7 @@ import { Card, Grid } from '../components'
 import { useApiFetch } from '../hooks/useApiFetch'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
-const PageSize = 8
+const PageSize = 12
 
 const Repos = () => {
   const { repos, loading } = useApiFetch()
