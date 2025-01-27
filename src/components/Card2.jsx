@@ -1,7 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import moment from 'moment'
-import { BiGitBranch } from 'react-icons/bi'
+import styled from "styled-components";
+import moment from "moment";
+import { BiGitBranch } from "react-icons/bi";
 
 const Card = ({ name, description, created_at }) => {
   return (
@@ -10,18 +9,18 @@ const Card = ({ name, description, created_at }) => {
         <BiGitBranch />
         <h5>{name}</h5>
       </span>
-      <p className='desc'>
+      <p className="desc">
         {description
           ? description.length < 150
             ? description
             : `${description.substring(0, 120)}...`
-          : 'No description'}
+          : "No description"}
       </p>
 
       <small>Created : {moment(created_at).fromNow()}</small>
     </Container>
-  )
-}
+  );
+};
 
 export const Container = styled.div`
   position: relative;
@@ -76,5 +75,5 @@ export const Container = styled.div`
     font-weight: bold;
     border-radius: 6px;
   }
-`
-export default Card
+`;
+export default Card;

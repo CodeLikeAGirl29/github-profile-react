@@ -4,13 +4,13 @@ export const useRepoFetch = (repoId, keyword) => {
   const [repo, setRepo] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const token = `${process.env.REACT_APP_API_TOKEN}`;
+  const token = `${import.meta.env.REACT_APP_API_TOKEN}`;
   useEffect(() => {
     const fetchRepo = async () => {
       try {
         setLoading(true);
         await fetch(`https://api.github.com/repos/codelikeagirl29/${repoId}`, {
-          auth: token
+          auth: token,
         })
           .then((res) => res.json())
           .then((data) => {

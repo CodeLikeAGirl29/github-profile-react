@@ -1,38 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import { useParams } from 'react-router-dom'
-import moment from 'moment/moment'
-import { BiCodeAlt, BiCode, BiGitBranch, BiTime } from 'react-icons/bi'
-import { BsTag } from 'react-icons/bs'
-import { GrClone } from 'react-icons/gr'
-import { VscIssues } from 'react-icons/vsc'
-import { GiBackwardTime } from 'react-icons/gi'
-import { ImHistory } from 'react-icons/im';
-import { useRepoFetch } from '../hooks/useRepoFetch'
-import { BreadCrumb, Loader, Meta } from '../components'
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { useParams } from "react-router-dom";
+import moment from "moment/moment";
+import { BiCodeAlt, BiCode, BiGitBranch, BiTime } from "react-icons/bi";
+import { BsTag } from "react-icons/bs";
+import { GrClone } from "react-icons/gr";
+import { VscIssues } from "react-icons/vsc";
+import { GiBackwardTime } from "react-icons/gi";
+import { ImHistory } from "react-icons/im";
+import { useRepoFetch } from "../hooks/useRepoFetch";
+import { BreadCrumb, Loader, Meta } from "../components";
 
-const token = `${process.env.REACT_APP_API_TOKEN}`
+const token = `${import.meta.env.VITE_APP_API_TOKEN}`;
 //console.log(token)
 
 const SingleRepo = () => {
-  const { repoId } = useParams()
-  const { repo, loading } = useRepoFetch(repoId)
-  const [langs, setLangs] = useState({})
-  const [tags, setTags] = useState([])
-  const [issues, setIssues] = useState([])
-  const [contents, setContents] = useState([])
-  const [commits, setCommits] = useState([])
-  const [messages, setMessages] = useState('')
-  const [time, setTime] = useState('')
-  const [author, setAuthor] = useState('')
+  const { repoId } = useParams();
+  const { repo, loading } = useRepoFetch(repoId);
+  const [langs, setLangs] = useState({});
+  const [tags, setTags] = useState([]);
+  const [issues, setIssues] = useState([]);
+  const [contents, setContents] = useState([]);
+  const [commits, setCommits] = useState([]);
+  const [messages, setMessages] = useState("");
+  const [time, setTime] = useState("");
+  const [author, setAuthor] = useState("");
 
-  const repoName = repo?.name
-  const repoDesc = repo?.description
-  const branch = repo?.default_branch
-  const cloneRepo = repo?.clone_url
-  const visibility = repo?.visibility
-  const created_at = repo?.created_at
-  const updated_at = repo?.updated_at
+  const repoName = repo?.name;
+  const repoDesc = repo?.description;
+  const branch = repo?.default_branch;
+  const cloneRepo = repo?.clone_url;
+  const visibility = repo?.visibility;
+  const created_at = repo?.created_at;
+  const updated_at = repo?.updated_at;
 
   useEffect(() => {
     const fetchLangs = async () => {
@@ -40,83 +40,95 @@ const SingleRepo = () => {
         await fetch(
           `https://api.github.com/repos/codelikeagirl29/${repoId}/languages`,
           {
-            auth: token
-          }
+            auth: token,
+          },
         )
           .then((res) => res.json())
           .then((data) => {
             //console.log(data)
-            setLangs(data)
-          })
+            setLangs(data);
+          });
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
+    };
     const fetchTags = async () => {
       try {
-        await fetch(`https://api.github.com/repos/codelikeagirl29/${repoId}/tags`, {
-          auth: token
-        })
+        await fetch(
+          `https://api.github.com/repos/codelikeagirl29/${repoId}/tags`,
+          {
+            auth: token,
+          },
+        )
           .then((res) => res.json())
           .then((data) => {
             //console.log(data)
-            setTags(data)
-          })
+            setTags(data);
+          });
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
+    };
     const fetchIssues = async () => {
       try {
-        await fetch(`https://api.github.com/repos/codelikeagirl29/${repoId}/issues`, {
-          auth: token
-        })
+        await fetch(
+          `https://api.github.com/repos/codelikeagirl29/${repoId}/issues`,
+          {
+            auth: token,
+          },
+        )
           .then((res) => res.json())
           .then((data) => {
             //console.log(data)
-            setIssues(data)
-          })
+            setIssues(data);
+          });
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
+    };
     const fetchContents = async () => {
       try {
-        await fetch(`https://api.github.com/repos/codelikeagirl29/${repoId}/contents`, {
-          auth: token
-        })
+        await fetch(
+          `https://api.github.com/repos/codelikeagirl29/${repoId}/contents`,
+          {
+            auth: token,
+          },
+        )
           .then((res) => res.json())
           .then((data) => {
             // console.log(data)
-            setContents(data)
-          })
+            setContents(data);
+          });
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
+    };
     const fetchCommits = async () => {
       try {
-        await fetch(`https://api.github.com/repos/codelikeagirl29/${repoId}/commits`, {
-          auth: token
-        })
+        await fetch(
+          `https://api.github.com/repos/codelikeagirl29/${repoId}/commits`,
+          {
+            auth: token,
+          },
+        )
           .then((res) => res.json())
           .then((data) => {
             // console.log(data[0]?.commit)
-            setCommits(data)
-            setMessages(data[0]?.commit?.message)
-            setTime(data[0]?.commit?.committer?.date)
-            setAuthor(data[0]?.commit?.committer?.name)
-          })
+            setCommits(data);
+            setMessages(data[0]?.commit?.message);
+            setTime(data[0]?.commit?.committer?.date);
+            setAuthor(data[0]?.commit?.committer?.name);
+          });
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
-    fetchLangs()
-    fetchTags()
-    fetchIssues()
-    fetchContents()
-    fetchCommits()
-  }, [repoId])
+    };
+    fetchLangs();
+    fetchTags();
+    fetchIssues();
+    fetchContents();
+    fetchCommits();
+  }, [repoId]);
 
   return (
     <>
@@ -127,9 +139,9 @@ const SingleRepo = () => {
         <Wrapper>
           <Content>
             <h3>repository name : {repoName}</h3>
-            <p>{repoDesc ? repoDesc : 'No description'}</p>
+            <p>{repoDesc ? repoDesc : "No description"}</p>
 
-            <div className='langs'>
+            <div className="langs">
               <BiCode />
               {Object.entries(langs).map(([key, text], i) => (
                 <div key={i}>
@@ -138,9 +150,9 @@ const SingleRepo = () => {
               ))}
               <BiCodeAlt />
             </div>
-            <div className='details'>
+            <div className="details">
               <span>
-                {' '}
+                {" "}
                 <BiGitBranch />
                 {branch} branch
               </span>
@@ -168,30 +180,30 @@ const SingleRepo = () => {
                 </span>
               )}
             </div>
-            <div className='clone'>
-              <a href={`${cloneRepo}`} target='_blank' rel='noreferrer'>
+            <div className="clone">
+              <a href={`${cloneRepo}`} target="_blank" rel="noreferrer">
                 <GrClone />
                 clone repository
               </a>
-              <span className='visibility'>{visibility}</span>
+              <span className="visibility">{visibility}</span>
             </div>
-            <div className='time'>
+            <div className="time">
               <span>Created : {moment(created_at).fromNow()}</span>
               <ImHistory />
               <span>Updated: {moment(updated_at).fromNow()} </span>
             </div>
           </Content>
           <Details>
-            <div className='header'>
-              <span className='author'>Last commit by: {author}</span>
+            <div className="header">
+              <span className="author">Last commit by: {author}</span>
             </div>
-            <div className='header'>
+            <div className="header">
               <span>
                 {messages
                   ? messages.length < 20
                     ? messages
                     : `${messages.substring(0, 30)}...`
-                  : 'No description'}
+                  : "No description"}
               </span>
               <span>{moment(time).fromNow()}</span>
               <span>
@@ -212,30 +224,32 @@ const SingleRepo = () => {
                       <td>
                         <a
                           href={`${item.html_url}`}
-                          target='_blank'
-                          rel='noreferrer'>
+                          target="_blank"
+                          rel="noreferrer"
+                        >
                           {item.name}
                         </a>
                       </td>
-                      <td className='size'>{item.size}</td>
+                      <td className="size">{item.size}</td>
                     </tr>
                   ))}
               </tbody>
             </table>
-            <div className='mobile'>
+            <div className="mobile">
               {contents &&
                 contents.length > 0 &&
                 contents.map((item, i) => (
                   <>
                     <a
                       href={`${item.html_url}`}
-                      target='_blank'
-                      rel='noreferrer'>
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       {item
                         ? item.name.length < 20
                           ? item.name
                           : `${item.name.substring(0, 30)}...`
-                        : 'No description'}
+                        : "No description"}
                     </a>
                   </>
                 ))}
@@ -244,8 +258,8 @@ const SingleRepo = () => {
         </Wrapper>
       </Container>
     </>
-  )
-}
+  );
+};
 
 export const Container = styled.div`
   display: flex;
@@ -254,7 +268,7 @@ export const Container = styled.div`
   align-items: center;
   //justify-content: center;
   min-height: 80vh;
-`
+`;
 export const Wrapper = styled.div`
   display: flex;
   border: 2px solid black;
@@ -270,7 +284,7 @@ export const Wrapper = styled.div`
     height: auto;
     flex-direction: column;
   }
-`
+`;
 
 export const Content = styled.div`
   width: 50%;
@@ -408,7 +422,7 @@ export const Content = styled.div`
       }
     }
   }
-`
+`;
 export const Details = styled.div`
   display: flex;
   align-items: center;
@@ -457,7 +471,7 @@ export const Details = styled.div`
         margin: 0.1rem;
       }
       .author {
-        width: 100% ;
+        width: 100%;
       }
     }
   }
@@ -485,7 +499,7 @@ export const Details = styled.div`
         left: -2px;
         top: -2px;
         z-index: 2;
-        width: 100% ;
+        width: 100%;
         box-shadow: 2px 2px black;
         transition: 0.1s ease-in-out;
         &:hover {
@@ -510,8 +524,8 @@ export const Details = styled.div`
     //border: 2px solid black;
     //padding: 0.25rem;
     a {
-      text-decoration: none ;
-      color: black ;
+      text-decoration: none;
+      color: black;
       font-size: 0.85rem;
       border: 2px solid black;
       margin: 0.5rem auto;
@@ -521,11 +535,11 @@ export const Details = styled.div`
       border-radius: 8px;
       background-color: rgb(255, 171, 76);
       cursor: pointer;
-      font-weight: bold ;
+      font-weight: bold;
     }
     @media screen and (min-width: 400px) {
-      display:none ;
+      display: none;
     }
   }
-`
-export default SingleRepo
+`;
+export default SingleRepo;

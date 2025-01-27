@@ -1,18 +1,17 @@
-import React from 'react'
-import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
-import { DiGithubAlt } from 'react-icons/di'
-import SearchBar from './SearchBar'
+import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+import { DiGithubAlt } from "react-icons/di";
+import SearchBar from "./SearchBar";
 
 const Header = () => {
   return (
     <Container>
       <div>
-        <NavLink to='/'>
-          <DiGithubAlt  className='logo'/>
+        <NavLink to="/">
+          <DiGithubAlt className="logo" />
         </NavLink>
       </div>
-      <div className='search'>
+      <div className="search">
         <SearchBar />
       </div>
       <ul>
@@ -20,15 +19,16 @@ const Header = () => {
           <NavLink
             to={`/repos`}
             style={({ isActive }) => ({
-              color: isActive ? 'white' : 'gray',
-            })}>
+              color: isActive ? "white" : "gray",
+            })}
+          >
             Repositories
           </NavLink>
         </li>
       </ul>
     </Container>
-  )
-}
+  );
+};
 
 export const Container = styled.nav`
   display: flex;
@@ -36,20 +36,20 @@ export const Container = styled.nav`
   align-items: center;
   justify-content: space-between;
   padding: 0.25rem 1rem;
-  border-bottom:1px solid white;
+  border-bottom: 1px solid white;
   background-color: #272728;
-  position: sticky ;
+  position: sticky;
   top: 0;
-  z-index: 500 ;
+  z-index: 500;
   @media screen and (max-width: 768px) {
     .search {
-      width: 60% ;
+      width: 60%;
     }
   }
   @media screen and (max-width: 400px) {
-     .search {
-      display: none ;
-     }
+    .search {
+      display: none;
+    }
   }
   div {
     display: flex;
@@ -84,9 +84,9 @@ export const Container = styled.nav`
         }
       }
       @media screen and (max-width: 400px) {
-       margin-left: auto ;
+        margin-left: auto;
       }
     }
   }
-`
-export default Header
+`;
+export default Header;

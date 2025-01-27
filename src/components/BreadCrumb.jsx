@@ -1,18 +1,17 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const BreadCrumb = ({ repoName }) => {
   return (
     <Container>
       <Content>
-        <Link to='/repos'>Back to Repositories</Link>
+        <Link to="/repos">Back to Repositories</Link>
 
-        <span className='repo'>{repoName}</span>
+        <span className="repo">{repoName}</span>
       </Content>
     </Container>
-  )
-}
+  );
+};
 
 export const Container = styled.div`
   display: flex;
@@ -27,7 +26,7 @@ export const Container = styled.div`
   @media screen and (max-width: 400px) {
     margin: 1rem;
   }
-`
+`;
 
 export const Content = styled.div`
   display: flex;
@@ -70,6 +69,6 @@ export const Content = styled.div`
       margin-left: 0;
     }
   }
-`
+`;
 
-export default BreadCrumb
+export default BreadCrumb;

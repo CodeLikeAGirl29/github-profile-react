@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const token = `${process.env.REACT_APP_API_TOKEN}`;
+const token = `${import.meta.env.VITE_APP_API_TOKEN}`;
 //const cors = 'https://cors-anywhere.herokuapp.com'
 //console.log(token)
 export const useApiFetch = () => {
@@ -11,12 +11,9 @@ export const useApiFetch = () => {
     const fetchRepos = async () => {
       try {
         setLoading(true);
-        await fetch(
-          `https://api.github.com/users/codelikeagirl29/repos?per_page=100`,
-          {
-            auth: token
-          }
-        )
+        await fetch(`https://api.github.com/users/octocat/repos?per_page=100`, {
+          auth: token,
+        })
           .then((res) => res.json())
           .then((data) => {
             //console.log(data)

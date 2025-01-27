@@ -18,7 +18,7 @@ const Repos = () => {
     <>
       <Meta
         title='Repositories'
-        description='A list of public respositories for lindsey'
+        description='A list of public respositories for github user'
       />
       <Container>
         <div className='title'>

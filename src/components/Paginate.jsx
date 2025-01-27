@@ -1,9 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Paginate = ({ children }) => {
-  return <Container>{children}</Container>
-}
+  return <Container>{children}</Container>;
+};
 
 export const Container = styled.div`
   display: flex;
@@ -16,8 +15,8 @@ export const Container = styled.div`
   }
   @media screen and (min-width: 800px) {
     width: 90%;
-    margin: 0 auto ;
+    margin: 0 auto;
   }
-`
+`;
 
-export default Paginate
+export default Paginate;

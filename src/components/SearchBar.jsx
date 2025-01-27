@@ -1,38 +1,38 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import styled from 'styled-components'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 const SearchBar = () => {
-  const navigate = useNavigate()
-  const [keyword, setKeyword] = useState('')
+  const navigate = useNavigate();
+  const [keyword, setKeyword] = useState("");
 
   const submitHandler = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (keyword.trim()) {
-      navigate(`/search/${keyword}`)
-      setKeyword('')
+      navigate(`/search/${keyword}`);
+      setKeyword("");
     } else {
-      navigate('/')
+      navigate("/");
     }
-  }
+  };
   return (
     <>
       <Container>
         <form onSubmit={submitHandler}>
           <input
-            type='text'
-            name='q'
-            placeholder='Search Github'
+            type="text"
+            name="q"
+            placeholder="Search Github"
             onChange={(e) => setKeyword(e.target.value)}
           />
-          <button type='submit' disabled={!keyword || keyword.length < 3}>
+          <button type="submit" disabled={!keyword || keyword.length < 3}>
             Search...
           </button>
         </form>
       </Container>
     </>
-  )
-}
+  );
+};
 
 export const Container = styled.div`
   display: flex;
@@ -67,6 +67,6 @@ export const Container = styled.div`
       cursor: pointer;
     }
   }
-`
+`;
 
-export default SearchBar
+export default SearchBar;

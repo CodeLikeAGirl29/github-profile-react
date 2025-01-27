@@ -1,113 +1,116 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import styled from 'styled-components'
-import { Loader } from '../components'
-import moment from 'moment/moment'
-import { MdOutlineMail } from 'react-icons/md'
-import { HiOutlineUsers } from 'react-icons/hi'
-import { GrTwitter } from 'react-icons/gr'
-import { BiGitBranch } from 'react-icons/bi'
-import { BsLink45Deg } from 'react-icons/bs'
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import styled from "styled-components";
+import { Loader } from "../components";
+import moment from "moment/moment";
+import { MdOutlineMail } from "react-icons/md";
+import { HiOutlineUsers } from "react-icons/hi";
+import { GrTwitter } from "react-icons/gr";
+import { BiGitBranch } from "react-icons/bi";
+import { BsLink45Deg } from "react-icons/bs";
 
-const token = `${process.env.REACT_APP_API_TOKEN}`
+const token = `${import.meta.env.VITE_APP_API_TOKEN}`;
 const SearchResults = () => {
-  const { keyword } = useParams()
-  const [user, setUser] = useState({})
-  const [loading, setLoading] = useState(false)
+  const { keyword } = useParams();
+  const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        setLoading(true)
+        setLoading(true);
         await fetch(`https://api.github.com/users/${keyword}`, {
           auth: token,
         })
           .then((res) => res.json())
           .then((data) => {
             //console.log(data)
-            setUser(data)
-            setLoading(false)
-          })
+            setUser(data);
+            setLoading(false);
+          });
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-      setLoading(false)
-    }
+      setLoading(false);
+    };
 
-    fetchUser()
+    fetchUser();
     //fetchUserRepos()
-  }, [keyword])
+  }, [keyword]);
 
   return (
     <Container>
       {loading ? (
-        <Loader text='Loading Github user...' />
+        <Loader text="Loading Github user..." />
       ) : (
         <>
-          <div className='profile'>
-            <img src={user?.avatar_url} alt='Lindsey' />
+          <div className="profile">
+            <img src={user?.avatar_url} alt="user avatar" />
             <div>
               <h4>{user?.name}</h4>
               <p>{user?.login}</p>
             </div>
             <a
-              className='bio'
+              className="bio"
               href={`${user?.html_url}`}
-              target='_blank'
-              rel='noreferrer'>
+              target="_blank"
+              rel="noreferrer"
+            >
               View Profile
             </a>
           </div>
-          <div className='details'>
-            <div className='bio'>{user?.bio ? user?.bio : 'no bio'}</div>
-            <div className='blog'>
+          <div className="details">
+            <div className="bio">{user?.bio ? user?.bio : "no bio"}</div>
+            <div className="blog">
               <a
                 href={user?.blog ? user?.blog : null}
-                target='_blank'
-                rel='noreferrer'>
+                target="_blank"
+                rel="noreferrer"
+              >
                 <BsLink45Deg />
-                {user?.blog ? user?.blog : 'no website'}
+                {user?.blog ? user?.blog : "no website"}
               </a>
             </div>
-            <div className='time'>
+            <div className="time">
               <p>created : {moment(user?.created_at).fromNow()}</p>
             </div>
-            <div className='email'>
+            <div className="email">
               <MdOutlineMail />
-              {user?.email ? user?.email : 'null'}
+              {user?.email ? user?.email : "null"}
             </div>
-            <div className='users'>
+            <div className="users">
               <HiOutlineUsers />
               <span>followers: {user?.followers}</span>
               <span>following: {user?.following}</span>
             </div>
-            <div className='repo_count'>
+            <div className="repo_count">
               <BiGitBranch />
               <span>Repositories: {user?.public_repos}</span>
 
               <span>
                 <a
                   href={`${user?.html_url}?tab=repositories`}
-                  target='_blank'
-                  rel='noreferrer'>
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   view
                 </a>
               </span>
             </div>
-            <div className='twitter'>
+            <div className="twitter">
               <GrTwitter />
               <p>
                 {user?.twitter_username
                   ? `@ ${user?.twitter_username}`
-                  : 'null'}
+                  : "null"}
               </p>
             </div>
           </div>
         </>
       )}
     </Container>
-  )
-}
+  );
+};
 
 export const Container = styled.div`
   display: flex;
@@ -320,5 +323,5 @@ export const Container = styled.div`
       margin: 0 auto;
     }
   }
-`
-export default SearchResults
+`;
+export default SearchResults;

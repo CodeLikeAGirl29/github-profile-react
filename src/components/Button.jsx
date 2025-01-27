@@ -1,13 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Button = ({ text, handleClick }) => {
   return (
-    <Container type='button' onClick={handleClick}>
+    <Container type="button" onClick={handleClick}>
       {text}
     </Container>
-  )
-}
+  );
+};
 
 export const Container = styled.button`
   display: flex;
@@ -18,5 +17,5 @@ export const Container = styled.button`
   border-radius: 4px;
   transition: all 0.3s;
   cursor: pointer;
-`
-export default Button
+`;
+export default Button;

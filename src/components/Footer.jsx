@@ -1,6 +1,5 @@
-import React from "react";
 import styled from "styled-components";
-import { PiCodeSimpleBold } from 'react-icons/pi';
+import { PiCodeSimpleBold } from "react-icons/pi";
 
 const Footer = () => {
   const date = new Date().getFullYear();
@@ -8,12 +7,8 @@ const Footer = () => {
     <Container>
       <small>
         <PiCodeSimpleBold /> with <span className="heart">❤</span> by{" "}
-        <a
-          href="https://lindseyk.dev/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Lindsey K
+        <a href="https://lindseyk.dev/" target="_blank" rel="noreferrer">
+          Lindsey
         </a>{" "}
         &copy; {date}
       </small>
